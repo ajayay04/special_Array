@@ -1,0 +1,34 @@
+#include <iostream>
+#include<queue>
+using namespace std;
+
+int main(){
+
+	int arr[] = {34,98,23,87,23,11,3};
+	int k = 3;
+
+	int len = sizeof(arr)/sizeof(arr[0]);
+
+	for(int i=0; i<len; i++){
+		cout<<arr[i]<<" ";
+	}
+	cout<<endl;
+
+	priority_queue<int ,vector<int>, greater<int>> p;
+	for(int i=0; i<len; i++){
+		p.push(arr[i]);
+	}
+
+	int max, i=1;
+
+	while(!p.empty()){
+		if(i==k){
+			max = p.top();
+			break;
+		}
+		i++;
+		p.pop();
+	}
+	cout<<"max : "<<max;
+	return 0;
+}
