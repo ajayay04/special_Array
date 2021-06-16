@@ -1,0 +1,83 @@
+#include <iostream>
+#include<climits>
+using namespace std;
+
+int main(){
+
+	int a[] = {10, 5, 3, 4, 3, 5, 6, 10};
+	int len = sizeof(a)/sizeof(a[0]);
+
+	int minPosi = INT_MAX;
+
+//----------time : o(n^2)--------------
+
+	for(int i=0; i<len; i++)
+	{
+		for(int j=i+1; j<len; j++)
+		{
+			if(a[i] == a[j])
+			{ 
+				if(minPosi > i)
+					minPosi = i;
+			}
+		}
+	}
+	cout<<minPosi;
+
+	return 0;
+}
+
+
+
+/*
+#include<bits/stdc++.h>
+using namespace std;
+
+--------------time:o(n log n)--------space:o(1)--------
+
+void printFirstRepeating(int arr[], int n)
+{
+	int min = -1;
+
+	set<int> myset;
+
+	for (int i = n - 1; i >= 0; i--)
+	{
+		// If element is already in hash set, update min
+		if (myset.find(arr[i]) != myset.end())
+			min = i;
+
+		else // Else add element to hash set
+			myset.insert(arr[i]);
+	}
+
+	if (min != -1)
+		cout << "The first repeating element is " << arr[min];
+	else
+		cout << "There are no repeating elements";
+}
+
+int main()
+{
+	int arr[] = {10, 5, 3, 4, 3, 5, 6};
+
+	int n = sizeof(arr) / sizeof(arr[0]);
+	printFirstRepeating(arr, n);
+}
+*/
+/*
+int minidx = INT_MAX;
+
+for(int i=0; i<n; i++)
+{
+	if(idx[a[i]] != -1)
+		minidx = min(minidx, idx[a[i]]);
+	else
+		idx[a[i]] = i;
+}
+if(minidx == INT_MAX)
+ 	cout<<-1<<endl;
+ else
+ 	cout<<minidx<<endl;
+
+*/
