@@ -1,0 +1,69 @@
+#include<iostream>
+#include<climits>
+using namespace std;
+
+int main(){
+
+	int ar[] = {7,5,-13,5,10,-2,5};
+
+	int len = sizeof(ar)/sizeof(ar[0]);
+	
+	/*
+	-----------------time:o(n^3)----------
+	int n;
+	cin>>n;
+	for(int i=0;i<n;i++) cin>>a[i];
+
+	int max = INT_MIN;
+	for(int i=0; i<n;i++){
+		for(int j=0;j<n;j++){
+			int s = 0;
+			for(int k=i;k<j;k++){
+				s = s + a[k];
+			}
+			if(s>max)
+				max = s;
+		}
+	}
+	cout<<max;
+	
+//-------------------time:o(n^2)-------------
+	int pre[len];
+	pre[0] = 0;
+	for(int i=1;i<len;i++){
+			pre[i] = pre[i-1] + ar[i];
+	}
+
+	int max = INT_MIN;
+
+	for(int i=1;i<len;i++){
+		for(int j=i;j<len;j++){
+			int sum = pre[j] - pre[i-1];
+			if(max < sum){
+				max = sum;
+			}
+		}
+	}
+*/
+//  -----kADANE ALGORITHM----
+//  --------------time:o(n)-----------
+
+	int max = INT_MIN;
+	int max_till_here = 0;
+
+	for(int i=0; i<len; i++){
+		max_till_here = max_till_here + ar[i];
+		if(max_till_here > max){
+			max = max_till_here;
+		}
+		// for non-negative array
+		//if(max_till_here < ar[i]){
+		if(max_till_here < 0){
+			max_till_here = 0;
+		}
+	}
+//*/
+	cout<<"max : "<<max<<endl;
+
+	return 0;
+}
