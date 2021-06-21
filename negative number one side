@@ -1,0 +1,30 @@
+#include<iostream>
+
+using namespace std;
+
+int main(){
+
+	int arr[] = {-34,-98,23,-87,267,11,-9,-8};
+
+	int i=-1,j=0;
+
+	int len = sizeof(arr)/sizeof(arr[0]);
+
+	//cout<<len;
+	while(j<len){
+
+		if(arr[j]<0){
+			i++;
+			int temp = arr[j];
+			arr[j] = arr[i];
+			arr[i] = temp;
+
+		}
+		j++;
+	}
+	for( i=0; i<len; i++){
+		cout<<arr[i]<<" ";
+	}
+
+	return 0;
+}
