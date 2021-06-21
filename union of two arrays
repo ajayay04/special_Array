@@ -1,0 +1,43 @@
+#include <iostream>
+#include<unordered_map>
+#include<vector>
+#include<iterator>
+using namespace std;
+
+int main(){
+
+	int arr[] = {1,2,3,45,56,781,8,9,99,1};
+	int arr2[] = {2,87,3,45,56,178,9,99,4,8};
+
+	unordered_map<int, bool> map;
+	vector<int> v;
+
+	int len = sizeof(arr)/sizeof(arr[0]);
+	int len2 = sizeof(arr2)/sizeof(arr2[0]);
+
+	int i,j;
+	for( i=0; i<len; i++){
+		map[arr[i]] = true;
+		v.push_back(arr[i]);
+	}
+	cout<<"size of map : "<<map.size()<<endl;
+
+	for( j=0; j<len2; j++){
+		if(map.count(arr2[j]) > 0){
+			continue;
+		}
+		map[arr2[j]] = true;
+		v.push_back(arr2[j]);
+	}
+	cout<<"size of map : "<<map.size()<<endl;
+
+	vector<int>::iterator it;
+	for(auto e:v){
+		cout<<e<<" ";
+	}
+
+    
+	cout<<endl<<"vector size : "<<v.size()<<endl;
+
+	return 0;
+}
