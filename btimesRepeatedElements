@@ -1,0 +1,32 @@
+#include<iostream>
+#include<unordered_map>
+#include<vector>
+using namespace std;
+
+template <class T>
+
+int main(){
+
+    int arr[] = {8,2,5,4,4,5,5,9,1,9,4,8,8,4,4,9,1,1};
+
+    unordered_map<int, int> map;
+
+    int len = sizeof(arr)/sizeof(arr[0]);
+
+    for(int i=0; i<len; i++){
+		map[arr[i]]++;
+	}
+
+	unordered_map<int,int>::iterator it;
+	for(it=map.begin(); it!=map.end(); it++){
+		if(it->second == 4){
+			cout<<it->first<<" = "<<it->second<<endl;
+
+			// type it->first stores the key part  and
+            //      it->second stroes the value part
+		}
+	}
+
+
+	return 0;
+}
