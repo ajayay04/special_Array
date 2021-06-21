@@ -1,0 +1,41 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main(){
+
+	int m[3][3] = {{1,2,3},{1,2,3},{1,2,3}};
+	int rows = sizeof(m)/sizeof(m[0]);
+	int cols = sizeof(m[0])/sizeof(m[0][0]);
+
+	int i,j;
+	cout<<rows<<" "<<cols<<endl;
+
+
+	int top=0, bottom=rows-1, left=0, right=cols-1;
+	int dir = 0; 
+	//dir=0 (l->r), dir=1 (t->b), dir=2 (r->l), dir=3 (b->t)
+	while(top<=bottom && left<=right){
+		if(dir==0){
+			for(i=left;i<=right;i++)
+				cout<<m[top][i]<<" ";
+			top++;
+		}
+		else if(dir==1){
+			for(i=top;i<=bottom;i++)
+				cout<<m[i][right]<<" ";
+			right--;
+		}
+		else if(dir==2){
+			for(i=right;i>=left;i--)
+				cout<<m[bottom][i]<<" ";
+			bottom--;
+		}
+		else if(dir==3){
+			for(i=bottom;i>=top;i--)
+				cout<<m[i][left]<<" ";
+			left++;
+		}
+		dir = (dir+1)%4;
+	}
+	return 0;
+}
